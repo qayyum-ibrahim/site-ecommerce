@@ -6,6 +6,7 @@ import Button from '../components/Button.jsx'
 import Img from '../components/Img.jsx'
 import Reveal from '../components/Reveal.jsx'
 import ProductCard from '../components/ProductCard.jsx'
+import QtyStepper from '../components/QtyStepper.jsx'
 import { getCategory, getProduct, products } from '../data/products.js'
 import { productPage } from '../data/shop.js'
 import { formatPrice } from '../lib/format.js'
@@ -44,7 +45,7 @@ export default function Product() {
 
 function ProductView({ product }) {
   const uid = useId()
-  const { addItem, maxQty } = useCart()
+  const { addItem, maxQty, openCart } = useCart()
   const [view, setView] = useState(0)
   const [option, setOption] = useState(product.options?.values[0])
   const [qty, setQty] = useState(1)
@@ -55,6 +56,7 @@ function ProductView({ product }) {
     event.preventDefault()
     addItem(product.id, option, qty)
     setAdded((n) => n + 1)
+    openCart()
   }
 
   const current = productPage.gallery[view]
@@ -143,16 +145,7 @@ function ProductView({ product }) {
                 )}
 
                 <div className="product__buy">
-                  <div className="qty" role="group" aria-labelledby={`${uid}-qty`}>
-                    <span id={`${uid}-qty`} className="visually-hidden">{productPage.quantityLabel}</span>
-                    <button type="button" aria-label="Decrease quantity" onClick={() => setQty((q) => Math.max(1, q - 1))} disabled={qty <= 1}>
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-                    </button>
-                    <output aria-live="polite">{qty}</output>
-                    <button type="button" aria-label="Increase quantity" onClick={() => setQty((q) => Math.min(maxQty, q + 1))} disabled={qty >= maxQty}>
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12M12 6v12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
-                    </button>
-                  </div>
+                  <QtyStepper value={qty} max={maxQty} label={productPage.quantityLabel} onChange={setQty} />
 
                   <button type="submit" className="btn btn--accent btn--lg product__add">
                     {productPage.addLabel}

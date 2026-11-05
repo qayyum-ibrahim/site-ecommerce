@@ -1,0 +1,66 @@
+.not-found {
+  display: grid;
+  align-content: center;
+  min-height: 70vh;
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.not-found__inner {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.not-found__code {
+  display: flex;
+  align-items: center;
+  gap: 0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 3rem + 16vw, 15rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: var(--color-text);
+}
+
+/* The "0" is a terracotta vase-mouth ring. */
+.not-found__o {
+  display: inline-block;
+  width: 0.72em;
+  height: 0.72em;
+  border: 0.13em solid var(--color-accent);
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  animation: fade-up var(--dur-slow) var(--ease) both;
+}
+
+.not-found__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.not-found__title {
+  font-size: var(--text-3xl);
+  max-width: 14ch;
+}
+
+.not-found__text {
+  max-width: 42ch;
+  color: var(--color-muted);
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 900px) {
+  .not-found__inner {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-9);
+  }
+}

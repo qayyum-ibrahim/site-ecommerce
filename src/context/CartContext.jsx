@@ -22,6 +22,7 @@ function lineKey(id, option) {
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState(loadItems)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
     try {
@@ -57,6 +58,8 @@ export function CartProvider({ children }) {
   }, [])
 
   const clearCart = useCallback(() => setItems([]), [])
+  const openCart = useCallback(() => setDrawerOpen(true), [])
+  const closeCart = useCallback(() => setDrawerOpen(false), [])
 
   const value = useMemo(() => {
     const lines = items.map((item) => {
@@ -72,8 +75,11 @@ export function CartProvider({ children }) {
       updateQty,
       removeItem,
       clearCart,
+      drawerOpen,
+      openCart,
+      closeCart,
     }
-  }, [items, addItem, updateQty, removeItem, clearCart])
+  }, [items, drawerOpen, addItem, updateQty, removeItem, clearCart, openCart, closeCart])
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }

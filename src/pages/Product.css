@@ -180,45 +180,6 @@
   margin-top: var(--space-6);
 }
 
-.qty {
-  display: inline-flex;
-  align-items: center;
-  min-height: 56px;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-pill);
-  background: var(--color-surface);
-}
-
-.qty button {
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 54px;
-  border-radius: var(--radius-pill);
-  transition: color var(--dur-fast) var(--ease);
-}
-
-.qty button:hover:not(:disabled) {
-  color: var(--color-accent);
-}
-
-.qty button:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.qty svg {
-  width: 18px;
-  height: 18px;
-}
-
-.qty output {
-  min-width: 2ch;
-  text-align: center;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
 .product__add {
   flex: 1 1 220px;
 }

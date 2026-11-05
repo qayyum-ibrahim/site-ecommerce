@@ -4,15 +4,15 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 
 ## Current status
 - Site: Kora Goods (E-commerce Website)
-- Last completed phase: Phase 3
-- Next phase: Phase 4 (Cart drawer + page, Checkout, Confirmation, not-found)
+- Last completed phase: Phase 4
+- Next phase: Phase 5 (Polish and hand-off)
 - Live URL: (owner fills in after the first Vercel deploy)
 
 ## Phase checklist
 - [x] Phase 1: Scaffold, deploy and design system
 - [x] Phase 2: Home page
 - [x] Phase 3: Main feature pages
-- [ ] Phase 4: Remaining pages
+- [x] Phase 4: Remaining pages
 - [ ] Phase 5: Polish and hand-off
 
 ## Decisions
@@ -38,6 +38,14 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P3: Only one photo per product exists, so the gallery shows 3 views of the same image (front, close detail, texture) as zoomed crops; each has its own fallback tone.
 - P3: "Add to cart" shows an inline success line with a "View cart" link (the drawer comes in Phase 4). Header badge pops when the count changes.
 - P3: Related products = same category first, then others, 4 total. Unknown product id shows an on-brand "not found" message with a link back to the shop.
+- P4: Copy for cart, checkout, confirmation and 404 lives in `src/data/cart.js`.
+- P4: Delivery fee: Lagos ₦3,500 (free at ₦100,000+, matching the Home perk), other states ₦6,500. Shown as "Choose a state" until a state is picked. Cart and drawer show a free-delivery progress bar.
+- P4: Header cart icon now opens the drawer (button); the "Cart" nav link goes to the full cart page. Add to cart also opens the drawer.
+- P4: Drawer is a modal dialog: focus trap, Escape and overlay close, focus returns to the opener, closes on any route change.
+- P4: Checkout fields: email, phone, first/last name, street, city, state (12 states list), card name, number (16 digits, auto-spaced), expiry MM/YY (not past), CVC. Payment fields use autocomplete="off" so browsers do not offer real cards.
+- P4: Errors show on blur and on submit; submit focuses the first bad field and shows an alert. A 0.9s "Placing order…" state, then the order is saved to sessionStorage (`kora-goods-last-order`) and passed in router state; cart is cleared.
+- P4: Order number format `KG-` + 6 random digits. Confirmation without an order shows an empty state.
+- P4: 404 is a big "4◯4" with a terracotta ring for the zero, plus Shop/Home buttons.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
@@ -47,4 +55,5 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - Shared components in `src/components/`: Header, Footer, Logo, Layout, Img (fallback tones: clay, sand, linen, ember), Button (variants primary/accent/outline/ghost, sizes sm/lg, `to`/`href`), Section (eyebrow/title/intro/action, tone surface/sand), PageTitle (title + meta), Placeholder (remove when pages are built).
 - Site copy and nav live in `src/data/site.js`. `cartCount` in Header is hard-coded 0 until Phase 3.
 - New shared pieces: `ProductCard`, `Reveal` (scroll fade-in), `NewsletterForm`, `src/lib/format.js` (`formatPrice` → ₦). `.product-grid` now lives in `ProductCard.css`.
-- Phase 4: use `useCart()` → `lines` (with `product`, `lineTotal`), `count`, `subtotal`, `maxQty`, `addItem`, `updateQty(key, qty)`, `removeItem(key)`, `clearCart()`. Drawer should open from the header cart button and after add to cart. `Placeholder` is still used by Cart/Checkout/Confirmation/NotFound.
+- Phase 4 added: `CartDrawer`, `CartLine`, `QtyStepper` (moved `.qty` styles out of Product.css), `FreeDelivery`, `EmptyState`, `Field`, `src/lib/order.js`, `src/lib/validate.js`. `Placeholder` was removed. `.summary` card styles live in `pages/Cart.css` and are reused by Checkout and Confirmation.
+- (Phase 3 note) Phase 4: use `useCart()` → `lines` (with `product`, `lineTotal`), `count`, `subtotal`, `maxQty`, `addItem`, `updateQty(key, qty)`, `removeItem(key)`, `clearCart()`. Drawer should open from the header cart button and after add to cart. `Placeholder` is still used by Cart/Checkout/Confirmation/NotFound.

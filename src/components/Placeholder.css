@@ -1,9 +1,0 @@
-.placeholder {
-  min-height: 60vh;
-  display: grid;
-  align-content: center;
-}
-
-.placeholder__title {
-  margin-top: var(--space-4);
-}

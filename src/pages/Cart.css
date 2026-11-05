@@ -1,0 +1,123 @@
+.cart-page {
+  padding-block: var(--space-7) var(--space-6);
+}
+
+.cart-page__head {
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.cart-page__title {
+  margin-top: var(--space-3);
+  font-size: var(--text-4xl);
+}
+
+.cart-page__count {
+  margin-top: var(--space-3);
+  color: var(--color-muted);
+}
+
+.cart-page__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.cart-page__lines {
+  list-style: none;
+  padding: 0;
+}
+
+/* Shared order summary card (cart and checkout). */
+.summary {
+  display: grid;
+  gap: var(--space-4);
+  align-self: start;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.summary__title {
+  font-size: var(--text-xl);
+}
+
+.summary__rows {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-line);
+}
+
+.summary__rows > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.summary__rows dt {
+  color: var(--color-muted);
+}
+
+.summary__rows dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary__rows .summary__total {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-line);
+  font-size: var(--text-lg);
+}
+
+.summary__rows .summary__total dt {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.summary__note {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.summary__link {
+  justify-self: center;
+}
+
+.summary__trust {
+  display: grid;
+  gap: var(--space-2);
+  list-style: none;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--color-line);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.summary__trust li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.summary__trust li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+@media (min-width: 960px) {
+  .cart-page__grid {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: var(--space-8);
+  }
+
+  .summary {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-5));
+    margin-top: var(--space-5);
+  }
+}
