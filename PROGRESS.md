@@ -4,14 +4,14 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 
 ## Current status
 - Site: Kora Goods (E-commerce Website)
-- Last completed phase: Phase 2
-- Next phase: Phase 3 (Shop, Product detail)
+- Last completed phase: Phase 3
+- Next phase: Phase 4 (Cart drawer + page, Checkout, Confirmation, not-found)
 - Live URL: (owner fills in after the first Vercel deploy)
 
 ## Phase checklist
 - [x] Phase 1: Scaffold, deploy and design system
 - [x] Phase 2: Home page
-- [ ] Phase 3: Main feature pages
+- [x] Phase 3: Main feature pages
 - [ ] Phase 4: Remaining pages
 - [ ] Phase 5: Polish and hand-off
 
@@ -32,6 +32,12 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P2: Featured: vase, linen throw, soy candle, leather tote. Badges "Bestseller"/"New" on a few products.
 - P2: Home copy (in `src/data/home.js`): hero "Warm objects for a calmer home.", perks strip (free Lagos delivery over ₦100,000, 14-day returns, small studios), promo "The Harmattan edit", newsletter "The Kora letter".
 - P2: Hero is an image with an overlapping copy card on desktop, stacked on mobile.
+- P3: Cart context (`src/context/CartContext.jsx`) stores `{ key, id, option, qty }` in localStorage key `kora-goods-cart`; line key is id + option; max qty 10 per line; unknown ids are dropped on load.
+- P3: Shop state lives in the URL (`?category=`, `?sort=`, `?q=`) so filters are shareable; default sort "Featured" puts the 4 featured items first.
+- P3: Shop/product copy in `src/data/shop.js`. Product detail delivery/returns/care notes reuse the Home perks wording.
+- P3: Only one photo per product exists, so the gallery shows 3 views of the same image (front, close detail, texture) as zoomed crops; each has its own fallback tone.
+- P3: "Add to cart" shows an inline success line with a "View cart" link (the drawer comes in Phase 4). Header badge pops when the count changes.
+- P3: Related products = same category first, then others, 4 total. Unknown product id shows an on-brand "not found" message with a link back to the shop.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
@@ -40,5 +46,5 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 (Short. Only what the next session needs to know.)
 - Shared components in `src/components/`: Header, Footer, Logo, Layout, Img (fallback tones: clay, sand, linen, ember), Button (variants primary/accent/outline/ghost, sizes sm/lg, `to`/`href`), Section (eyebrow/title/intro/action, tone surface/sand), PageTitle (title + meta), Placeholder (remove when pages are built).
 - Site copy and nav live in `src/data/site.js`. `cartCount` in Header is hard-coded 0 until Phase 3.
-- Home links to `/shop?category=<id>`: Shop (Phase 3) must read the `category` query param.
-- New shared pieces: `ProductCard`, `Reveal` (scroll fade-in), `NewsletterForm`, `src/lib/format.js` (`formatPrice` → ₦), `.product-grid` class lives in `pages/Home.css` (move to a shared file if Shop reuses it).
+- New shared pieces: `ProductCard`, `Reveal` (scroll fade-in), `NewsletterForm`, `src/lib/format.js` (`formatPrice` → ₦). `.product-grid` now lives in `ProductCard.css`.
+- Phase 4: use `useCart()` → `lines` (with `product`, `lineTotal`), `count`, `subtotal`, `maxQty`, `addItem`, `updateQty(key, qty)`, `removeItem(key)`, `clearCart()`. Drawer should open from the header cart button and after add to cart. `Placeholder` is still used by Cart/Checkout/Confirmation/NotFound.

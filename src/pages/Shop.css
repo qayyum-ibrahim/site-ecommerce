@@ -1,0 +1,201 @@
+.shop-hero {
+  padding-block: var(--space-7) var(--space-6);
+}
+
+.shop-hero__title {
+  margin-top: var(--space-3);
+  max-width: 16ch;
+}
+
+.shop-hero__intro {
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+}
+
+.shop {
+  padding-bottom: var(--section-y);
+}
+
+.shop-bar {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  margin-bottom: var(--space-2);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.shop-search {
+  position: relative;
+  grid-column: 1 / -1;
+}
+
+.shop-search svg {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.shop-search input,
+.shop-sort select {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.shop-search input {
+  padding: 0 var(--space-4) 0 calc(var(--space-4) + 26px);
+}
+
+.shop-search input:hover,
+.shop-sort select:hover {
+  border-color: var(--color-muted);
+}
+
+.shop-search input:focus-visible,
+.shop-sort select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.shop-sort {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.shop-sort label {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.shop-sort select {
+  appearance: none;
+  padding: 0 calc(var(--space-4) + 18px) 0 var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5' fill='none' stroke='%231a1a1a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.shop-chips {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: calc(var(--gutter) * -1) 0;
+  padding-inline: var(--gutter) 0;
+  padding-block: 2px;
+}
+
+.shop-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  flex: none;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--color-text);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.shop-count {
+  padding-block: var(--space-4) var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.shop-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-9) var(--space-5);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  text-align: center;
+  animation: fade-up var(--dur-slow) var(--ease) both;
+}
+
+.shop-empty svg {
+  width: 56px;
+  height: 56px;
+  color: var(--color-accent);
+}
+
+.shop-empty__title {
+  font-size: var(--text-2xl);
+}
+
+.shop-empty__text {
+  max-width: 40ch;
+  color: var(--color-muted);
+}
+
+@media (min-width: 900px) {
+  .shop-bar {
+    grid-template-columns: auto 1fr minmax(240px, 320px) auto;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .shop-chips {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    margin: 0;
+    padding: 2px;
+    overflow: visible;
+    flex-wrap: wrap;
+  }
+
+  .shop-search {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .shop-sort {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}
+

@@ -3,7 +3,7 @@ import './Img.css'
 
 const tones = ['clay', 'sand', 'linen', 'ember']
 
-export default function Img({ src, alt, ratio = '1 / 1', tone, label, className = '', eager = false }) {
+export default function Img({ src, alt, ratio = '1 / 1', tone, label, className = '', eager = false, imgStyle }) {
   const [failed, setFailed] = useState(!src)
   const pick = tone || tones[(alt || '').length % tones.length]
 
@@ -23,6 +23,7 @@ export default function Img({ src, alt, ratio = '1 / 1', tone, label, className 
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
+          style={imgStyle}
           onError={() => setFailed(true)}
         />
       )}

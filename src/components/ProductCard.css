@@ -69,3 +69,19 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
+/* Shared grid for product cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6) var(--space-4);
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-7) var(--space-5);
+  }
+}
