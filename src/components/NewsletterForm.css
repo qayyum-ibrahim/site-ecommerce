@@ -1,0 +1,103 @@
+.newsletter-form {
+  width: 100%;
+  max-width: 520px;
+}
+
+.newsletter-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.newsletter-form input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.newsletter-form input::placeholder {
+  color: var(--color-muted);
+}
+
+.newsletter-form input:hover {
+  border-color: var(--color-muted);
+}
+
+.newsletter-form input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+
+.newsletter-form__row.has-error input {
+  border-color: var(--color-error);
+}
+
+.newsletter-form .btn {
+  min-height: 52px;
+}
+
+.newsletter-form__error {
+  margin-top: var(--space-3);
+  padding-left: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-error);
+}
+
+.newsletter-form__success {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 520px;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-success);
+  font-weight: 500;
+  animation: fade-up var(--dur) var(--ease) both;
+}
+
+.newsletter-form__success svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 560px) {
+  .newsletter-form__row {
+    flex-direction: row;
+    padding: var(--space-1);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    transition: border-color var(--dur-fast) var(--ease);
+  }
+
+  .newsletter-form__row:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+
+  .newsletter-form__row.has-error {
+    border-color: var(--color-error);
+  }
+
+  .newsletter-form input,
+  .newsletter-form input:hover,
+  .newsletter-form__row.has-error input {
+    border-color: transparent;
+    min-height: 48px;
+  }
+
+  .newsletter-form input:focus-visible {
+    outline: none;
+  }
+
+  .newsletter-form .btn {
+    min-height: 48px;
+  }
+}
