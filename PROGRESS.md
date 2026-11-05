@@ -4,8 +4,8 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 
 ## Current status
 - Site: Kora Goods (E-commerce Website)
-- Last completed phase: Phase 4
-- Next phase: Phase 5 (Polish and hand-off)
+- Last completed phase: Phase 5
+- Next phase: none. Site complete.
 - Live URL: (owner fills in after the first Vercel deploy)
 
 ## Phase checklist
@@ -13,7 +13,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - [x] Phase 2: Home page
 - [x] Phase 3: Main feature pages
 - [x] Phase 4: Remaining pages
-- [ ] Phase 5: Polish and hand-off
+- [x] Phase 5: Polish and hand-off
 
 ## Decisions
 (Write each choice you made without asking. One line each, with the phase number.)
@@ -46,12 +46,20 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P4: Errors show on blur and on submit; submit focuses the first bad field and shows an alert. A 0.9s "Placing order…" state, then the order is saved to sessionStorage (`kora-goods-last-order`) and passed in router state; cart is cleared.
 - P4: Order number format `KG-` + 6 random digits. Confirmation without an order shows an empty state.
 - P4: 404 is a big "4◯4" with a terracotta ring for the zero, plus Shop/Home buttons.
+- P5: Checked every route at 360, 768, 1280 and 1920 in headless Chrome: one h1 per page, titles per route, no console errors, no unlabeled fields, no img without alt.
+- P5: Fixed horizontal overflow on Shop at 360px: grid columns use minmax(0, 1fr); mobile shop bar is now search + sort on row 1 and full-bleed scrolling chips on row 2 (sort label visually hidden below 900px).
+- P5: h1 scale is now clamp(2.25rem, 1.2rem + 5vw, 5.25rem) so long words fit at 360px; headings get overflow-wrap: break-word as a safety net.
+- P5: Home hero title has its own size, clamp(2.25rem, 1rem + 3.6vw, 4.25rem), so "objects" fits in the hero card at every width.
+- P5: Product grids use minmax(0, 1fr) columns.
+- P5: README.md covers running, adding photos and editing the content files.
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
 
 ## Notes for next session
 (Short. Only what the next session needs to know.)
+- Site complete.
+- Owner: run `/site-done ecommerce <live url>` in the projects folder.
 - Shared components in `src/components/`: Header, Footer, Logo, Layout, Img (fallback tones: clay, sand, linen, ember), Button (variants primary/accent/outline/ghost, sizes sm/lg, `to`/`href`), Section (eyebrow/title/intro/action, tone surface/sand), PageTitle (title + meta), Placeholder (remove when pages are built).
 - Site copy and nav live in `src/data/site.js`. `cartCount` in Header is hard-coded 0 until Phase 3.
 - New shared pieces: `ProductCard`, `Reveal` (scroll fade-in), `NewsletterForm`, `src/lib/format.js` (`formatPrice` → ₦). `.product-grid` now lives in `ProductCard.css`.

@@ -60,6 +60,7 @@ h4 {
   line-height: 1.08;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 h1 { font-size: var(--text-4xl); font-weight: 800; }

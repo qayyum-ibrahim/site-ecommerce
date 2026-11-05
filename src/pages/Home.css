@@ -46,6 +46,7 @@
 .hero__title {
   margin-top: var(--space-4);
   max-width: 12ch;
+  font-size: clamp(2.25rem, 1rem + 3.6vw, 4.25rem);
 }
 
 .hero__intro {

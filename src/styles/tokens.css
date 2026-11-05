@@ -24,7 +24,7 @@
   --text-xl: 1.375rem;
   --text-2xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
   --text-3xl: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
-  --text-4xl: clamp(2.6rem, 1.6rem + 4.4vw, 5.25rem);
+  --text-4xl: clamp(2.25rem, 1.2rem + 5vw, 5.25rem);
 
   /* Spacing scale */
   --space-1: 0.25rem;
