@@ -2,15 +2,14 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 248, 245, 0.92);
-  backdrop-filter: saturate(1.4) blur(12px);
-  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  background: var(--color-bg);
   border-bottom: 1px solid transparent;
-  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .header--scrolled {
   border-bottom-color: var(--color-line);
+  box-shadow: 0 6px 24px -18px rgba(26, 26, 26, 0.35);
 }
 
 .header__inner {

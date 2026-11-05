@@ -52,6 +52,7 @@ Claude Code: read this at the start of every session. Update it at the end of ev
 - P5: Home hero title has its own size, clamp(2.25rem, 1rem + 3.6vw, 4.25rem), so "objects" fits in the hero card at every width.
 - P5: Product grids use minmax(0, 1fr) columns.
 - P5: README.md covers running, adding photos and editing the content files.
+- Post-P5: Owner added the photos. Header is now a solid background with a soft shadow on scroll; the translucent blur let page text show through and made the fixed mobile menu collapse inside the bar on iOS Safari (backdrop-filter creates a containing block).
 
 ## Blockers
 (Write anything that stopped you. Say exactly what the owner must do.)
